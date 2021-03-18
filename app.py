@@ -112,6 +112,9 @@ def get_domain_reputation_list(
 
 @app.route('/print_domain_list/', methods=['GET'])
 def print_domain_list():
+    creds = get_credentials()
+    service = build("gmailpostmastertools", "v1beta1", credentials=creds)       
+    domains_resource = service.domains()
     reputations = get_domain_reputation_list(domains_resource, "boxed.com")
     print(reputations)
 
