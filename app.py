@@ -6,6 +6,8 @@ from google_auth_oauthlib.flow import InstalledAppFlow
 from google.auth.transport.requests import Request
 from googleapiclient import errors
 
+app = Flask(__name__)
+
 # If modifying these scopes, delete the file token.pickle.
 SCOPES = ["https://www.googleapis.com/auth/postmaster.readonly"]
 
@@ -110,9 +112,6 @@ def get_domain_reputation_list(
 def print_domain_list():
     reputations = get_domain_reputation_list(domains_resource, "boxed.com")
     print(reputations)
-
-
-app = Flask(__name__)
 
 @app.route('/')
 def index():
